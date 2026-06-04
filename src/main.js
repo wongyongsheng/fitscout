@@ -155,7 +155,8 @@ function getRelevantTrends() {
 }
 
 function createThemes() {
-  const useCase = [state.answers.occasion, state.answers.weather, state.answers.style]
+  const answers = state.answers ?? {}
+  const useCase = [answers.occasion, answers.weather, answers.style]
     .filter(Boolean)
     .join(', ')
   const refinementCopy = state.refinement ? ` Updated to feel ${state.refinement}.` : ''
