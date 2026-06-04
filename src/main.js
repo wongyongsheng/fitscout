@@ -1,77 +1,9 @@
-import './style.css'
-
 const DB_NAME = 'fitscout-inbox'
 const DB_VERSION = 1
 const STORE_NAME = 'inspirations'
 
 let db
 let inspirations = []
-
-document.querySelector('#app').innerHTML = `
-  <main class="layout">
-    <header>
-      <p class="eyebrow">Private inbox</p>
-      <h1>FitScout Inspiration Agent</h1>
-      <p class="subtitle">Save image uploads and links in one place, then generate outfit ideas from your mood and destination.</p>
-    </header>
-
-    <section class="panel">
-      <h2>Add an image</h2>
-      <form id="image-form" class="stack" autocomplete="off">
-        <label>
-          Image file
-          <input id="image-file" name="image" type="file" accept="image/*" required />
-        </label>
-        <label>
-          Notes (optional)
-          <input name="note" type="text" maxlength="140" placeholder="e.g. streetwear layers" />
-        </label>
-        <button type="submit">Save image</button>
-      </form>
-    </section>
-
-    <section class="panel">
-      <h2>Save a link</h2>
-      <form id="link-form" class="stack" autocomplete="off">
-        <label>
-          URL
-          <input name="url" type="url" required placeholder="https://..." />
-        </label>
-        <label>
-          Notes (optional)
-          <input name="note" type="text" maxlength="140" placeholder="e.g. monochrome tailoring" />
-        </label>
-        <button type="submit">Save link</button>
-      </form>
-    </section>
-
-    <section class="panel">
-      <h2>Generate outfit</h2>
-      <form id="agent-form" class="stack" autocomplete="off">
-        <label>
-          How are you feeling?
-          <input name="mood" type="text" required placeholder="confident, relaxed, bold..." />
-        </label>
-        <label>
-          Where are you going?
-          <input name="destination" type="text" required placeholder="brunch, office, concert..." />
-        </label>
-        <button type="submit">Generate suggestion</button>
-      </form>
-      <p id="agent-output" class="agent-output">Add a few inspirations, then generate your look.</p>
-    </section>
-
-    <section class="panel">
-      <div class="gallery-head">
-        <h2>Gallery</h2>
-        <p id="item-count">0 items</p>
-      </div>
-      <div id="gallery" class="gallery" aria-live="polite"></div>
-    </section>
-
-    <p id="status" class="status" aria-live="polite"></p>
-  </main>
-`
 
 const imageForm = document.querySelector('#image-form')
 const linkForm = document.querySelector('#link-form')
